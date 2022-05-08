@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 
-void enablePrettyLogging(bool isEnabled) {
+void enablePrettyLogging({bool isEnabled = true}) {
   // only enable logging for debug mode
   Logger.root.level = isEnabled ? Level.ALL : Level.OFF;
   hierarchicalLoggingEnabled = true;
