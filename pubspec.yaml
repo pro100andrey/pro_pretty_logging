@@ -11,6 +11,7 @@ dependencies:
   lint:
     git:
       url: https://github.com/pro100andrey/lint.git
+      ref: master
   logging: ^1.0.2
 
   
