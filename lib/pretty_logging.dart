@@ -47,10 +47,6 @@ void enablePrettyLogging({bool isEnabled = true}) {
         '$levelColor$level$endColor '
         '$startColor$message$endColor';
 
-    log(
-      fullMessage,
-      time: time,
-      name: logger,
-    );
+    log(fullMessage, time: time, name: logger);
   });
 }
