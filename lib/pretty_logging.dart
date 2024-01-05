@@ -2,13 +2,20 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 
-void enablePrettyLogging({bool isEnabled = true}) {
-  // only enable logging for debug mode
-  Logger.root.level = isEnabled ? Level.ALL : Level.OFF;
+void prettyLogging({bool enable = false, List<String>? ignoredLoggers}) {
+  if (!enable) {
+    return;
+  }
+
+  Logger.root.level = enable ? Level.ALL : Level.OFF;
   hierarchicalLoggingEnabled = true;
 
   Logger.root.onRecord.listen((rec) {
-    if (!isEnabled) {
+    if (!enable) {
+      return;
+    }
+
+    if (ignoredLoggers?.toSet().contains(rec.loggerName) ?? false) {
       return;
     }
 
@@ -23,30 +30,40 @@ void enablePrettyLogging({bool isEnabled = true}) {
 
     var startColor = grayColor;
 
-    switch (rec.level.name) {
-      case 'INFO':
+    switch (rec.level) {
+      case Level.INFO:
         startColor = infoColor;
-        break;
-      case 'WARNING':
+
+      case Level.WARNING:
         startColor = warningColor;
-        break;
-      case 'SEVERE':
+
+      case Level.SEVERE:
         startColor = severeColor;
-        break;
-      case 'SHOUT':
+
+      case Level.SHOUT:
         startColor = shoutColor;
-        break;
     }
 
-    final time = rec.time;
-    final level = rec.level.name;
-    final message = rec.message;
-    final logger = rec.loggerName;
+    final fullMessage = '$whiteColor${rec.time}$endColor '
+        '$levelColor${rec.level.name}$endColor '
+        '$startColor${rec.message}$endColor';
 
-    final fullMessage = '$whiteColor$time$endColor '
-        '$levelColor$level$endColor '
-        '$startColor$message$endColor';
+    const kIsWeb = identical(0, 0.0);
 
-    log(fullMessage, time: time, name: logger);
+    if (!kIsWeb) {
+      log(
+        fullMessage,
+        time: rec.time,
+        name: rec.loggerName,
+        sequenceNumber: rec.sequenceNumber,
+        zone: rec.zone,
+        level: rec.level.value,
+        error: rec.error,
+        stackTrace: rec.stackTrace,
+      );
+    } else {
+      // ignore: avoid_print
+      print('[${rec.loggerName}] $fullMessage');
+    }
   });
 }

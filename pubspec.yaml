@@ -1,17 +1,26 @@
-name: pretty_logging
-description: The pretty_logging library.
-publish_to: none
-version: 1.0.0+1
+name: pro_pretty_logging
+description: The pretty logging library.
+version: 1.0.0
+
+repository: https://github.com/pro100andrey/pro_pretty_logging
+issue_tracker: https://github.com/pro100andrey/pro_pretty_logging/issues
+homepage: https://github.com/pro100andrey/pro_pretty_logging
+documentation: https://github.com/pro100andrey/pro_pretty_logging/blob/main/README.md
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 environment:
-  sdk: ">=2.18.1 <3.0.0"
+  sdk: "^3.0.0"
 
 dependencies:
-  intl: ^0.17.0
-  logging: ^1.0.2
+  intl: ^0.18.0
+  logging: ^1.2.0
 
 dev_dependencies:
-  lint:
-    git:
-      url: https://github.com/pro100andrey/lint.git
-  
+  pro_lints: ^2.0.2
