@@ -2,6 +2,26 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 
+/// Configures and enables pretty logging in your Dart application.
+///
+/// Use this function to set up colorful and customizable log output for better
+/// readability.
+///
+/// - [enable]: Set to `true` to enable pretty logging. Default is `false`.
+///
+/// - [ignoredLoggers]: A list of logger names that should be ignored when
+/// logging. Default is `null`.
+///
+/// Example:
+/// ```dart
+/// import 'package:pro_pretty_logging/pro_pretty_logging.dart';
+///
+/// void main() {
+///   prettyLogging(enable: true, ignoredLoggers: ['my_logger']);
+///
+///   // Continue with the rest of your application code
+/// }
+/// ```
 void prettyLogging({bool enable = false, List<String>? ignoredLoggers}) {
   if (!enable) {
     return;

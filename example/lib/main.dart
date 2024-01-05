@@ -1,34 +1,46 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+import 'package:pro_pretty_logging/pretty_logging.dart';
 
 void main() {
+  prettyLogging(enable: kDebugMode, ignoredLoggers: ['GoRouter']);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        theme: ThemeData(useMaterial3: true),
-        home: const MyHomePage(),
+  Widget build(BuildContext context) => const MaterialApp(
+        home: MyHomePage(),
       );
 }
 
-class MyHomePage extends StatefulWidget {
+final _logger = Logger('MyHomePage');
+
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(),
-        body: const Center(
-          child: Text(
-            'Hello, World!',
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              OutlinedButton(
+                child: const Text('LogIn'),
+                onPressed: () {
+                  _logger
+                    ..info('info example')
+                    ..fine('fine example')
+                    ..severe('severe example')
+                    ..shout('shout example')
+                    ..warning('warning example');
+                },
+              ),
+            ],
           ),
         ),
       );
