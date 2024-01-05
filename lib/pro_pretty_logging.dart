@@ -2,6 +2,15 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 
+/// The type of output to use when pretty logging is enabled.
+enum PrettyOutputType {
+  /// Use the `print` function to output logs.
+  print,
+
+  /// Use the `log` function to output logs.
+  log,
+}
+
 /// Configures and enables pretty logging in your Dart application.
 ///
 /// Use this function to set up colorful and customizable log output for better
@@ -22,7 +31,11 @@ import 'package:logging/logging.dart';
 ///   // Continue with the rest of your application code
 /// }
 /// ```
-void prettyLogging({bool enable = false, List<String>? ignoredLoggers}) {
+void prettyLogging({
+  bool enable = false,
+  List<String>? ignoredLoggers,
+  PrettyOutputType type = PrettyOutputType.log,
+}) {
   if (!enable) {
     return;
   }
@@ -68,22 +81,22 @@ void prettyLogging({bool enable = false, List<String>? ignoredLoggers}) {
         '$levelColor${rec.level.name}$endColor '
         '$startColor${rec.message}$endColor';
 
-    const kIsWeb = identical(0, 0.0);
-
-    if (!kIsWeb) {
-      log(
-        fullMessage,
-        time: rec.time,
-        name: rec.loggerName,
-        sequenceNumber: rec.sequenceNumber,
-        zone: rec.zone,
-        level: rec.level.value,
-        error: rec.error,
-        stackTrace: rec.stackTrace,
-      );
-    } else {
-      // ignore: avoid_print
-      print('[${rec.loggerName}] $fullMessage');
+    switch (type) {
+      case PrettyOutputType.log:
+        log(
+          fullMessage,
+          time: rec.time,
+          name: rec.loggerName,
+          sequenceNumber: rec.sequenceNumber,
+          zone: rec.zone,
+          level: rec.level.value,
+          error: rec.error,
+          stackTrace: rec.stackTrace,
+        );
+      case PrettyOutputType.print:
+        // ignore: avoid_print
+        print(fullMessage);
+        return;
     }
   });
 }
