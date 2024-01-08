@@ -21,8 +21,13 @@ Import the library and utilize the `prettyLogging()` function with the desired p
 import 'package:pro_pretty_logging/pro_pretty_logging.dart';
 
 void main() {
-  prettyLogging(enable: true, ignoredLoggers: ['my_logger']);
-
+  prettyLogging(
+    enable: kDebugMode,
+    ignoredLoggers: ['GoRouter'],
+    type: PrettyOutputType.log,
+    level: Level.ALL,
+  );
+  
   // Continue with the rest of your application code
 }
 ```

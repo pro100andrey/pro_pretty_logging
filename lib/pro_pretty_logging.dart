@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 
+export 'package:logging/logging.dart';
+
 /// The type of output to use when pretty logging is enabled.
 enum PrettyOutputType {
   /// Use the `print` function to output logs.
@@ -26,7 +28,12 @@ enum PrettyOutputType {
 /// import 'package:pro_pretty_logging/pro_pretty_logging.dart';
 ///
 /// void main() {
-///   prettyLogging(enable: true, ignoredLoggers: ['my_logger']);
+///   prettyLogging(
+///     enable: kDebugMode,
+///     ignoredLoggers: ['GoRouter'],
+///     type: PrettyOutputType.log,
+///     level: Level.ALL,
+///   );
 ///
 ///   // Continue with the rest of your application code
 /// }
@@ -35,12 +42,15 @@ void prettyLogging({
   bool enable = false,
   List<String>? ignoredLoggers,
   PrettyOutputType type = PrettyOutputType.log,
+  Level level = Level.ALL,
+
 }) {
-  if (!enable) {
+  Logger.root.level = enable ? level : Level.OFF;
+
+  if (!enable || level == Level.OFF) {
     return;
   }
 
-  Logger.root.level = enable ? Level.ALL : Level.OFF;
   hierarchicalLoggingEnabled = true;
 
   Logger.root.onRecord.listen((rec) {

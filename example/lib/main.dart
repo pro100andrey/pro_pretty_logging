@@ -4,7 +4,10 @@ import 'package:logging/logging.dart';
 import 'package:pro_pretty_logging/pro_pretty_logging.dart';
 
 void main() {
-  prettyLogging(enable: kDebugMode, ignoredLoggers: ['GoRouter']);
+  prettyLogging(
+    enable: kDebugMode,
+    ignoredLoggers: ['GoRouter'],
+  );
   runApp(const MyApp());
 }
 
