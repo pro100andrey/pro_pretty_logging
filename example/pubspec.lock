@@ -59,14 +59,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.18.1"
   logging:
     dependency: "direct main"
     description:
@@ -111,17 +103,17 @@ packages:
     dependency: "direct dev"
     description:
       name: pro_lints
-      sha256: f50a5ef144d1bbce2bcbab66136a61e20c7b426ecdcf4762876a8a799bf3033f
+      sha256: d468beb14110144f711a2da7982919035f888ea266a25367d47553a220653884
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   pro_pretty_logging:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.1"
+    version: "1.0.4"
   sky_engine:
     dependency: transitive
     description: flutter

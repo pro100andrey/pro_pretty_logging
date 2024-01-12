@@ -43,7 +43,6 @@ void prettyLogging({
   List<String>? ignoredLoggers,
   PrettyOutputType type = PrettyOutputType.log,
   Level level = Level.ALL,
-
 }) {
   Logger.root.level = enable ? level : Level.OFF;
 

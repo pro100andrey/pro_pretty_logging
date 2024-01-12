@@ -1,6 +1,6 @@
 name: pro_pretty_logging
-description: The pretty logging library.
-version: 1.0.3
+description: The `pro_pretty_logging` library provides a grade solution for enhancing logging in your Dart applications. It offers robust customization options for log output, including colorful formatting, filtering, and improved readability. With `pro_pretty_logging`, you can take control of your logging experience.
+version: 1.0.4
 
 repository: https://github.com/pro100andrey/pro_pretty_logging
 issue_tracker: https://github.com/pro100andrey/pro_pretty_logging/issues
@@ -19,7 +19,6 @@ environment:
   sdk: "^3.0.0"
 
 dependencies:
-  intl: ^0.18.0
   logging: ^1.2.0
 
 dev_dependencies:
