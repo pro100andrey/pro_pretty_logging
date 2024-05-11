@@ -13,9 +13,9 @@ packages:
     dependency: "direct dev"
     description:
       name: pro_lints
-      sha256: d468beb14110144f711a2da7982919035f888ea266a25367d47553a220653884
+      sha256: d5c3a96182a5722ada0ec239549fbeb3db7112c16dc79ee9c5e4373ac813712c
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.3"
 sdks:
-  dart: ">=3.0.0 <4.0.0"
+  dart: ">=3.3.0 <4.0.0"

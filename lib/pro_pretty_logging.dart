@@ -23,34 +23,28 @@ enum PrettyOutputType {
 /// - [ignoredLoggers]: A list of logger names that should be ignored when
 /// logging. Default is `null`.
 ///
-/// Example:
-/// ```dart
-/// import 'package:pro_pretty_logging/pro_pretty_logging.dart';
+/// - [type]: The type of output to use when pretty logging is enabled. Default
+/// is [PrettyOutputType.log].
 ///
-/// void main() {
-///   prettyLogging(
-///     enable: kDebugMode,
-///     ignoredLoggers: ['GoRouter'],
-///     type: PrettyOutputType.log,
-///     level: Level.ALL,
-///   );
+/// - [level]: The logging level to use. Default is [Level.ALL].
 ///
-///   // Continue with the rest of your application code
-/// }
-/// ```
+/// - [hierarchicalLogging]: Whether to use hierarchical logging. Default is
+/// `true`.
+///
 void prettyLogging({
   bool enable = false,
   List<String>? ignoredLoggers,
   PrettyOutputType type = PrettyOutputType.log,
   Level level = Level.ALL,
+  bool hierarchicalLogging = true,
 }) {
-  Logger.root.level = enable ? level : Level.OFF;
-
   if (!enable || level == Level.OFF) {
     return;
   }
 
-  hierarchicalLoggingEnabled = true;
+  Logger.root.level = level;
+
+  hierarchicalLoggingEnabled = hierarchicalLogging;
 
   Logger.root.onRecord.listen((rec) {
     if (!enable) {

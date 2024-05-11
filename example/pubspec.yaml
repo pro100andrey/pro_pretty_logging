@@ -1,5 +1,5 @@
 name: example
-description: A pro_validator example app.
+description: A pro_pretty_logging example app.
 publish_to: "none"
 
 version: 1.0.0+1
@@ -17,7 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pro_lints: ^2.0.1
+  pro_lints: ^2.0.3
 
 flutter:
   uses-material-design: true

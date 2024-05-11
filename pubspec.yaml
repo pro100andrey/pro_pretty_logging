@@ -1,6 +1,6 @@
 name: pro_pretty_logging
 description: The library provides a grade solution for enhancing logging in your Dart applications.
-version: 1.0.5
+version: 1.0.6
 
 repository: https://github.com/pro100andrey/pro_pretty_logging
 issue_tracker: https://github.com/pro100andrey/pro_pretty_logging/issues
@@ -22,4 +22,4 @@ dependencies:
   logging: ^1.2.0
 
 dev_dependencies:
-  pro_lints: ^2.0.2
+  pro_lints: ^2.0.3
