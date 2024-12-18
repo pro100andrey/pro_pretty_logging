@@ -1,3 +1,7 @@
+## 2.0.0
+
+* Update colors
+
 ## 1.0.6
 
 * Added `hierarchicalLogging` to allow for hierarchical logging.

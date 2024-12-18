@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:pro_pretty_logging/pro_pretty_logging.dart';
 
 void main() {

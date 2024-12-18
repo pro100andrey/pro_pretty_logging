@@ -55,18 +55,35 @@ void prettyLogging({
       return;
     }
 
-    const endColor = '\x1b[0m';
-    const whiteColor = '\x1b[37m';
-    const grayColor = '\x1b[90m';
-    const infoColor = '\x1b[94m';
-    const warningColor = '\x1b[93m';
-    const severeColor = '\x1b[103m\x1b[31m';
-    const shoutColor = '\x1b[41m\x1b[93m';
-    const levelColor = '\x1b[93m';
+    const endColor = '\x1b[0m'; // Reset color
+    const whiteColor = '\x1b[37m'; // White
+    const grayColor = '\x1b[90m'; // Gray
+    const levelColor = '\x1b[93m'; // Yellow
+
+    const finestColor = '\x1b[90m'; // gray
+    const finerColor = '\x1b[36m'; // Cyan
+    const fineColor = '\x1b[32m'; // Green
+    const configColor = '\x1b[35m'; // Magenta
+    const infoColor = '\x1b[34m'; // Blue
+    const warningColor = '\x1b[33m'; // Yellow
+    const severeColor = '\x1b[31m'; // Red
+    const shoutColor = '\x1b[41m\x1b[97m'; // Red background, white text
 
     var startColor = grayColor;
 
     switch (rec.level) {
+      case Level.FINEST:
+        startColor = finestColor;
+
+      case Level.FINER:
+        startColor = finerColor;
+
+      case Level.FINE:
+        startColor = fineColor;
+
+      case Level.CONFIG:
+        startColor = configColor;
+
       case Level.INFO:
         startColor = infoColor;
 
